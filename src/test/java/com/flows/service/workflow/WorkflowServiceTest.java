@@ -18,8 +18,8 @@ public class WorkflowServiceTest {
 
     @Test
     public void whenApplicationStarts_thenHibernateCreatesInitialRecords() {
-        List<Workflow> books = workflowService.list();
+        List<Workflow> workflows = workflowService.list();
 
-        Assert.assertEquals(books.size(), 3);
+        Assert.assertEquals(workflows.size(), 3);
     }
 }
