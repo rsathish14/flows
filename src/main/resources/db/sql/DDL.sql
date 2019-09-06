@@ -6,6 +6,8 @@ create TABLE workflow (
     PRIMARY KEY (id)
 );
 
+CREATE SEQUENCE workflow_id;
+
 create TABLE workflow_template (
     id        integer,
     name       varchar(200),
@@ -21,6 +23,7 @@ create TABLE workflow_template (
 create TABLE workflow_instance (
     id        integer,
     workflow_id integer REFERENCES workflow(id),
+    correlation varchar(200),
 	created_date   timestamp,
     created_by        varchar(200),
     PRIMARY KEY (id)
@@ -54,6 +57,7 @@ create TABLE task_instance (
 	task_definition_id integer REFERENCES task_instance(id),
     due_date    date,
 	assignee 	varchar(200),
+	acquired_by 	varchar(200),
     created_date   timestamp,
     created_by        varchar(200),
     PRIMARY KEY(id)

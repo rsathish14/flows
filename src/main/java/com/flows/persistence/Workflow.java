@@ -1,6 +1,7 @@
 package com.flows.persistence;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -10,7 +11,8 @@ import java.time.OffsetDateTime;
 public class Workflow {
     @Id
     @Column(name = "id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "workflow_id")
+    @SequenceGenerator(name="workflow_id", sequenceName = "workflow_id", allocationSize = 1)
     private Long id;
 
     @Column(name = "name")

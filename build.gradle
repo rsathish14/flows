@@ -29,7 +29,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
-    implementation('org.postgresql:postgresql')
+    implementation 'org.postgresql:postgresql'
+    compile 'org.liquibase:liquibase-core:3.4.1'
 
     components {
         withModule('org.springframework:spring-beans') {
