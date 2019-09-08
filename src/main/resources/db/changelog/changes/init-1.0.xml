@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <changeSet author="sathish" id="1" >
-        <createTable tableName="workflow">
+        <createTable tableName="workflow" schemaName="workflow">
             <column name="id" type="integer">
                 <constraints primaryKey="true"/>
             </column>
@@ -16,13 +16,33 @@
             <column name="created_date" type="timestamp"/>
             <column name="created_by" type="varchar(255)"/>
         </createTable>
-        <createSequence sequenceName="workflow_id"/>
+        <createSequence sequenceName="workflow_id" schemaName="workflow"/>
     </changeSet>
+
     <changeSet author="sathish" id="2">
         <sql>
             insert into workflow values(nextval('workflow_id'), 'Holiday Request', '2016-06-22 19:10:25-07', 'sathish');
             insert into workflow values(nextval('workflow_id'), 'Expense Report', '2016-06-22 19:10:25-07', 'sathish' );
             insert into workflow values(nextval('workflow_id'), 'Access Request', '2016-06-22 19:10:25-07', 'sathish');
         </sql>
+    </changeSet>
+
+    <changeSet author="sathish" id="3">
+        <createTable tableName="workflow_template" schemaName="workflow">
+            <column name="id" type="integer">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="workflow_id" type="integer">
+                <constraints nullable="false" foreignKeyName="fk_workflow" references="workflow(id)"/>
+            </column>
+            <column name="template" type="jsonb">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="created_by" type="varchar(255)"/>
+        </createTable>
     </changeSet>
 </databaseChangeLog>
