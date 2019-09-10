@@ -44,5 +44,6 @@
             <column name="created_date" type="timestamp"/>
             <column name="created_by" type="varchar(255)"/>
         </createTable>
+        <createSequence sequenceName="workflow_template_id" schemaName="workflow"/>
     </changeSet>
 </databaseChangeLog>
