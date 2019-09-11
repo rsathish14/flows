@@ -5,7 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.OffsetDateTime;
 
 
 @Data
@@ -16,7 +15,6 @@ public class WorkflowTemplate extends  AbstractEntity {
     @GeneratedValue (strategy=GenerationType.SEQUENCE, generator="workflow_template_id")
     @SequenceGenerator(name="workflow_template_id", sequenceName = "workflow_template_id", allocationSize = 1)
     private Long id;
-
 
     @Column(name="name")
     private String name;
@@ -30,10 +28,6 @@ public class WorkflowTemplate extends  AbstractEntity {
     @Basic(fetch = FetchType.LAZY)
     private WorkflowExecPlan template;
 
-    @Column(name = "created_date")
-    private OffsetDateTime created_date;
 
-    @Column(name = "created_by")
-    private String created_by;
 
 }

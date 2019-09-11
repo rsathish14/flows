@@ -14,14 +14,11 @@ import java.time.OffsetDateTime;
 @Data
 @AllArgsConstructor
 public class WorkflowTemplateMapper {
+
     private WorkflowService workflowService;
 
-    private WorkflowTemplate workflowTemplate;
-
-
-
-
     public WorkflowTemplate map(WorkflowExecPlan wep) {
+        WorkflowTemplate workflowTemplate = new WorkflowTemplate();
         workflowTemplate.setName(wep.getName());
         //TODO get workflow from wep
         Long i = Long.parseLong("1");

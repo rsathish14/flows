@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 
 @Data
 @Entity(name="workflow")
-public class Workflow {
+public class Workflow extends  AbstractEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "workflow_id")
